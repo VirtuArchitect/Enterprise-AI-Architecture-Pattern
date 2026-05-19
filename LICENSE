@@ -1,0 +1,40 @@
+EAAP — Enterprise AI Architecture Pattern
+Licensing Terms
+
+This repository uses a dual-licence structure.
+
+---
+
+FRAMEWORK DOCUMENTATION (papers/, docs/)
+
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+Copyright (c) 2026 John Goulden
+
+You are free to share and adapt the material for any purpose, including
+commercially, provided you give appropriate credit and link to the licence.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+---
+
+REFERENCE IMPLEMENTATION (implementation/)
+
+Licensed under Creative Commons Attribution-NonCommercial 4.0 International
+(CC BY-NC 4.0).
+Copyright (c) 2026 John Goulden
+
+You are free to share and adapt the material for non-commercial purposes,
+provided you give appropriate credit and link to the licence.
+
+Commercial use — including production deployment, integration into commercial
+products or services, or use within a commercial organisation beyond internal
+evaluation — requires a separate written agreement.
+
+Full licence text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+---
+
+COMMERCIAL LICENSING
+
+For commercial deployment or licensing enquiries:
+research@johngoulden.de
