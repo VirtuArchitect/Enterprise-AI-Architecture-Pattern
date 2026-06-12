@@ -117,4 +117,4 @@ Germany
 
 - Email: [research@johngoulden.de](mailto:research@johngoulden.de)
 - ORCID: [0009-0000-5626-6535](https://orcid.org/0009-0000-5626-6535)
-- GitHub: (https://github.com/VirtuArchitect) 
+- GitHub: https://github.com/VirtuArchitect 
