@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use EAAP, please cite the Zenodo publication."
+title: "EAAP - Enterprise AI Architecture Pattern - A Governance Architecture for Deterministic Enterprise AI Systems"
+authors:
+  - family-names: Goulden
+    given-names: John
+    orcid: "https://orcid.org/0009-0000-5626-6535"
+type: generic
+doi: "10.5281/zenodo.20085547"
+url: "https://zenodo.org/records/20085547"
+date-released: "2026-05-08"
+license: "CC-BY-4.0"
+preferred-citation:
+  type: article
+  title: "EAAP - Enterprise AI Architecture Pattern - A Governance Architecture for Deterministic Enterprise AI Systems"
+  authors:
+    - family-names: Goulden
+      given-names: John
+      orcid: "https://orcid.org/0009-0000-5626-6535"
+  doi: "10.5281/zenodo.20085547"
+  url: "https://zenodo.org/records/20085547"
+  date-released: "2026-05-08"
+references:
+  - type: article
+    title: "EAAP-LGF A Governance Architecture for AI in Lethal Decision Support Systems"
+    authors:
+      - family-names: Goulden
+        given-names: John
+        orcid: "https://orcid.org/0009-0000-5626-6535"
+    doi: "10.5281/zenodo.20205544"
+    url: "https://zenodo.org/records/20205544"
+    date-released: "2026-05-15"

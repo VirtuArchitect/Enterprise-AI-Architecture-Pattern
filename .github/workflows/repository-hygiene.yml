@@ -1,0 +1,67 @@
+name: Repository hygiene
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    name: Scan documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Scan for forbidden tokens and Unicode dashes
+        shell: python
+        run: |
+          import re
+          import sys
+          import zipfile
+          from pathlib import Path
+
+          root = Path(".")
+          blocked_terms = [
+              "ver" + "idian",
+              "vir" + "idian",
+              "proprietary & " + "confidential",
+              "proprietary &amp; " + "confidential",
+          ]
+          forbidden = re.compile("|".join(re.escape(term) for term in blocked_terms), re.IGNORECASE)
+          unicode_dash = re.compile("[\u2014\u2013\u2011\u2010\u2212]")
+          checked_suffixes = {".md", ".txt", ".json", ".yml", ".yaml", ".cff"}
+          failures = []
+
+          def scan_text(path, text):
+              rel = path.as_posix()
+              if forbidden.search(rel) or forbidden.search(text):
+                  failures.append(f"{rel}: forbidden token")
+              if unicode_dash.search(text):
+                  failures.append(f"{rel}: Unicode dash character")
+
+          for path in root.rglob("*"):
+              if ".git" in path.parts or not path.is_file():
+                  continue
+              if path.suffix.lower() == ".docx":
+                  try:
+                      with zipfile.ZipFile(path) as package:
+                          for name in package.namelist():
+                              if name.lower().endswith((".xml", ".rels")):
+                                  try:
+                                      scan_text(path, package.read(name).decode("utf-8"))
+                                  except UnicodeDecodeError:
+                                      pass
+                  except zipfile.BadZipFile:
+                      failures.append(f"{path.as_posix()}: invalid docx package")
+              elif path.suffix.lower() in checked_suffixes or path.name in {"README.md", "LICENSE"}:
+                  scan_text(path, path.read_text(encoding="utf-8", errors="replace"))
+
+          if failures:
+              print("Repository hygiene scan failed:")
+              for failure in failures:
+                  print(f"- {failure}")
+              sys.exit(1)
+
+          print("Repository hygiene scan passed.")

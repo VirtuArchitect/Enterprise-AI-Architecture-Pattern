@@ -1,0 +1,21 @@
+Repository Licensing Terms
+
+Copyright (c) 2026 John Goulden
+
+This repository uses a split licence structure:
+
+1. Framework documentation and papers
+
+The documents under docs/ and papers/ are licensed under the Creative Commons Attribution 4.0 International Licence (CC BY 4.0).
+
+You are free to share and adapt the material for any purpose, including commercially, provided you give appropriate credit, provide a link to the licence, and indicate if changes were made.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+2. Implementation schemas and examples
+
+The files under implementation/ are licensed under the Apache License, Version 2.0. See implementation/LICENSE.
+
+3. Third-party material
+
+This repository is intended to contain first-party EAAP materials only. Third-party research sources used during drafting are not redistributed here unless they are explicitly included with their own licence.

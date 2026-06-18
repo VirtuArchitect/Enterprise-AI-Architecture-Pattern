@@ -1,0 +1,102 @@
+{
+  "scenario": "Tier 2 infrastructure change recommendation",
+  "request": {
+    "request_id": "req-2026-001",
+    "actor": {
+      "id": "user-platform-01",
+      "role": "platform-engineer"
+    },
+    "intent": "Recommend a controlled upgrade plan for a virtualisation cluster"
+  },
+  "orchestration_output": {
+    "output_id": "out-2026-001",
+    "request_id": "req-2026-001",
+    "intent": "virtualisation-upgrade-planning",
+    "risk_tier": "Tier 2",
+    "outcome": "escalate",
+    "recommendation": "Prepare a change plan, but do not execute until the missing maintenance-window approval is supplied.",
+    "domains_invoked": [
+      "virtualisation",
+      "operations",
+      "security"
+    ],
+    "evidence": [
+      {
+        "source_id": "vendor-upgrade-guide-001",
+        "classification": "vendor-supported",
+        "summary": "Vendor upgrade sequence confirms supported target version.",
+        "currency": "current"
+      },
+      {
+        "source_id": "internal-change-policy-001",
+        "classification": "framework-supported",
+        "summary": "Tier 2 change requires approval token before execution.",
+        "currency": "current"
+      }
+    ],
+    "known_unknowns": [
+      "Maintenance window not confirmed",
+      "Rollback owner not assigned"
+    ],
+    "confidence": {
+      "overall": "Medium",
+      "domain": {
+        "virtualisation": "High",
+        "operations": "Medium",
+        "security": "Medium"
+      }
+    },
+    "conflicts": [],
+    "approval_required": true,
+    "approval_token_id": null,
+    "execution_plan_id": "plan-2026-001",
+    "audit_event_id": "audit-2026-001"
+  },
+  "approval_token": {
+    "approval_token_id": "approval-2026-001",
+    "request_id": "req-2026-001",
+    "execution_plan_id": "plan-2026-001",
+    "risk_tier": "Tier 2",
+    "approver": {
+      "id": "cab-chair-01",
+      "role": "change-approver"
+    },
+    "approved_actions": [
+      "execute-upgrade-precheck",
+      "execute-upgrade"
+    ],
+    "issued_at": "2026-06-18T10:00:00Z",
+    "expires_at": "2026-06-18T18:00:00Z",
+    "status": "issued"
+  },
+  "audit_event": {
+    "audit_event_id": "audit-2026-001",
+    "timestamp": "2026-06-18T09:40:00Z",
+    "request_id": "req-2026-001",
+    "actor": {
+      "id": "user-platform-01",
+      "role": "platform-engineer"
+    },
+    "intent": "virtualisation-upgrade-planning",
+    "domains_invoked": [
+      "virtualisation",
+      "operations",
+      "security"
+    ],
+    "evidence_classes": [
+      "vendor-supported",
+      "framework-supported"
+    ],
+    "confidence": "Medium",
+    "known_unknowns": [
+      "Maintenance window not confirmed",
+      "Rollback owner not assigned"
+    ],
+    "conflicts": [],
+    "approval_token_id": null,
+    "execution_plan_id": "plan-2026-001",
+    "outcome": "escalate",
+    "hash_previous": null,
+    "hash_current": "sha256-placeholder-for-example"
+  }
+}

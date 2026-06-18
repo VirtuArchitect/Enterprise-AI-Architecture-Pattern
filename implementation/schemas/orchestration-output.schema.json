@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/eaap/schemas/orchestration-output.schema.json",
+  "title": "EAAP Orchestration Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "output_id",
+    "request_id",
+    "intent",
+    "risk_tier",
+    "outcome",
+    "recommendation",
+    "domains_invoked",
+    "evidence",
+    "known_unknowns",
+    "confidence",
+    "conflicts",
+    "approval_required",
+    "approval_token_id",
+    "execution_plan_id",
+    "audit_event_id"
+  ],
+  "properties": {
+    "output_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risk_tier": {
+      "type": "string",
+      "enum": [
+        "Tier 0",
+        "Tier 1",
+        "Tier 2",
+        "Tier 3"
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "proceed",
+        "escalate",
+        "block"
+      ]
+    },
+    "recommendation": {
+      "type": "string"
+    },
+    "domains_invoked": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "classification",
+          "summary",
+          "currency"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "vendor-supported",
+              "framework-supported",
+              "best-practice",
+              "heuristic",
+              "assumption"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "current",
+              "stale",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "known_unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overall",
+        "domain"
+      ],
+      "properties": {
+        "overall": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "domain": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "High",
+              "Medium",
+              "Low",
+              "Unknown"
+            ]
+          }
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "status"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "resolved",
+              "unresolved"
+            ]
+          }
+        }
+      }
+    },
+    "approval_required": {
+      "type": "boolean"
+    },
+    "approval_token_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution_plan_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "audit_event_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

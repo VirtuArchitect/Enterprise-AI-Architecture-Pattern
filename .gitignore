@@ -1,0 +1,9 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+~$*.docx
+
+# Local generated exports
+tmp/
+output/
+*.tmp

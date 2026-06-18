@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/eaap/schemas/audit-event.schema.json",
+  "title": "EAAP Audit Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "audit_event_id",
+    "timestamp",
+    "request_id",
+    "actor",
+    "intent",
+    "domains_invoked",
+    "evidence_classes",
+    "confidence",
+    "known_unknowns",
+    "conflicts",
+    "approval_token_id",
+    "execution_plan_id",
+    "outcome",
+    "hash_previous",
+    "hash_current"
+  ],
+  "properties": {
+    "audit_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "intent": {
+      "type": "string"
+    },
+    "domains_invoked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_classes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "High",
+        "Medium",
+        "Low",
+        "Unknown"
+      ]
+    },
+    "known_unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approval_token_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution_plan_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "proceed",
+        "escalate",
+        "block"
+      ]
+    },
+    "hash_previous": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hash_current": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
